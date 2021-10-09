@@ -2,8 +2,14 @@
 let express = require('express');
 let bodyParser = require('body-parser');
 
+// импортируем самописный модуль
+let weatherRequest = require('./requests/weather.request');
+
+
 // запускаем модуль
 let app = express();
+
+//828451a13a1cbf889f1ea0fc17944516
 
 // устанавливаем загаловок view engine в значения ejs
 app.set('view engine', 'ejs');
@@ -28,8 +34,8 @@ app.post('/', (req, res) =>{
   // деструктурируем обьект req.body
   let { city } = req.body;
 
-  // выводим названия города в консоль
-  console.log(city);
+  // вызываем функцию и передаем ей город
+  weatherRequest(city);
 
   // отдавем визуальный вид клиенту (HTML).
   res.render('index');
