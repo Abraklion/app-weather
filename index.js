@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({extended : true}))
 app.get('/', (req, res) => {
 
   // отдавем визуальный вид клиенту (HTML).
-  res.render('index');
+  res.render('index',{weather: null, error: null});
 
   // завершает процесс ответа.
   // res.end('Hello');
@@ -46,12 +46,8 @@ app.post('/', async (req, res) =>{
   // вызываем функцию и передаем ей город
   const {weather, error} = await weatherRequest(city);
 
-  // выводим значения переменных
-  console.log("weather", weather);
-  console.log("error", error);
-
   // отдавем визуальный вид клиенту (HTML).
-  res.render('index');
+  res.render('index', {weather, error});
 })
 
 /*----------------------- Запускаем сервер на порту 3000 ----------------------------*/

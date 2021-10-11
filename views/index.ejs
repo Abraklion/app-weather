@@ -15,7 +15,20 @@
 
                 <h1 class="app__title">Прогноз погоды</h1>
 
-                <!-- <p class="app__error">Ошибка</p>-->
+                <% if(weather) { %>
+
+                <div class="app__options">
+                    <p class="app__city"><%=weather.city%></p>
+                    <p class="app__celsius"><%=weather.celsius%> &#8451;</p>
+                </div>
+
+                <%}%>
+
+                <% if(error) { %>
+
+                <p class="app__error"><%=error%></p>
+
+                <%}%>
 
                 <form action="/" method="POST" class="app__form form">
                     <div class="form__input">
