@@ -44,10 +44,14 @@ app.post('/', async (req, res) =>{
   let { city } = req.body;
 
   // вызываем функцию и передаем ей город
-  const {weather, error} = await weatherRequest(city);
+  const values = await weatherRequest(city);
 
   // отдавем визуальный вид клиенту (HTML).
-  res.render('index', {weather, error});
+  // res.render('index', {weather,error});
+
+  // возврощаем Json.
+  res.json(values);
+
 })
 
 /*----------------------- Запускаем сервер на порту 3000 ----------------------------*/
