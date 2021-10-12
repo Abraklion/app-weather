@@ -56,6 +56,8 @@ app.post('/', async (req, res) =>{
 
 /*----------------------- Запускаем сервер на порту 3000 ----------------------------*/
 
-app.listen(3000, () => {
+const PORT = process.env.PORT || 80;
+
+app.listen(PORT, () => {
   console.log("Сервер старт!");
 })
